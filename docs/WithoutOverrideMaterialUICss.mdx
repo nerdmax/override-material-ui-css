@@ -1,0 +1,36 @@
+---
+name: Without OverrideMaterialUICss
+menu: OverrideMaterialUICss
+---
+
+import { Playground, PropsTable } from "docz";
+import { OverrideMaterialUICss } from "../src/OverrideMaterialUICss";
+import Button from "@material-ui/core/Button";
+import { css } from "emotion";
+
+# Without OverrideMaterialUICss
+
+This is the material-ui's button with some customised css created by [emotion](https://emotion.sh/):
+
+```typescript
+css(`
+  color: red;
+  background-color: blue;
+  font-size: 4rem;
+`);
+```
+
+We cannot change the button style.
+
+<Playground>
+  <Button
+    variant="contained"
+    className={css(`
+    color: red;
+    background-color: blue;
+    font-size: 4rem;
+  `)}
+  >
+    Button
+  </Button>
+</Playground>
