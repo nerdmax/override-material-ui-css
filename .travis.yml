@@ -1,4 +1,8 @@
 language: node_js
+branches:
+  only:
+    - master
+    - /^greenkeeper/.*$/
 node_js:
   - "10"
 env:
@@ -7,4 +11,7 @@ cache: yarn
 git:
   depth: 5
 script:
-  - yarn test:cover
+  - yarn test:cover && yarn build:docz
+after_success:
+  - npm run deploy-docs
+  # - npm run semantic-release
