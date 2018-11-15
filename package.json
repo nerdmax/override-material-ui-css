@@ -1,0 +1,125 @@
+{
+  "name": "override-material-ui-css",
+  "version": "0.0.0-development",
+  "license": "MIT",
+  "author": "Max <mrliucan@foxmail.com>",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/plugin.js",
+  "module": "dist/plugin.es.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "build": "rimraf dist && tsc -p tsconfig.base.json && rollup -c && rimraf compiled",
+    "build-storybook": "npm run build && rimraf storybook-static && build-storybook",
+    "build:docz": "docz build",
+    "build:watch": "chokidar 'src/**/*.ts' 'src/**/*.tsx' -c 'npm run build'",
+    "precommit": "pretty-quick --staged",
+    "deploy": "npm run now-build && cd storybook-static && now",
+    "dev:docz": "docz dev",
+    "format": "pretty-quick",
+    "now-build": "npm run build-storybook",
+    "now-start": "cd storybook-static && serve",
+    "prepublishOnly": "npm run test && npm run build",
+    "storybook": "start-storybook -p 6006",
+    "test": "jest",
+    "test:cover": "npm run test && codecov",
+    "test:watch": "npm test -- --watchAll"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageDirectory": "<rootDir>/coverage",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "moduleNameMapper": {
+      "@src/(.*)": "<rootDir>/src/$1",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/tests/__mocks__/fileMock.js"
+    },
+    "setupFiles": [
+      "<rootDir>/tests/__setup__/setup.ts"
+    ],
+    "setupTestFrameworkScriptFile": "<rootDir>/tests/__setup__/setupFramework.ts",
+    "testRegex": "(<rootDir>/(tests|src)/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "transform": {
+      ".[jt]sx?$": "<rootDir>/node_modules/babel-jest"
+    }
+  },
+  "dependencies": {
+    "react": "^16.6.1",
+    "react-jss": "^8.6.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/preset-env": "^7.1.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.1.0",
+    "@material-ui/core": "^3.5.1",
+    "@storybook/addon-a11y": "^4.0.4",
+    "@storybook/addon-actions": "^4.0.4",
+    "@storybook/addon-backgrounds": "^4.0.4",
+    "@storybook/addon-centered": "^4.0.4",
+    "@storybook/addon-console": "^1.1.0",
+    "@storybook/addon-info": "^4.0.4",
+    "@storybook/addon-knobs": "^4.0.4",
+    "@storybook/addon-links": "^4.0.4",
+    "@storybook/addon-options": "^4.0.4",
+    "@storybook/addon-storysource": "^4.0.4",
+    "@storybook/addon-viewport": "^4.0.4",
+    "@storybook/addons": "^4.0.4",
+    "@storybook/react": "4.0.4",
+    "@types/enzyme": "^3.1.15",
+    "@types/jest": "^23.3.2",
+    "@types/react-test-renderer": "^16.0.2",
+    "@types/sinon": "^5.0.2",
+    "@types/storybook__react": "^4.0.0",
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-core": "^7.0.0-0",
+    "babel-jest": "^23.6.0",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-require-context-hook": "^1.0.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "chokidar": "^2.0.4",
+    "codecov": "^3.1.0",
+    "docz": "^0.12.9",
+    "emotion": "^9.2.12",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.7.0",
+    "husky": "^1.1.3",
+    "jest": "^23.6.0",
+    "jest-emotion": "^9.2.7",
+    "moment": "^2.22.2",
+    "prettier": "^1.15.2",
+    "pretty-quick": "^1.6.0",
+    "react-test-renderer": "^16.6.1",
+    "react-testing-library": "^5.2.3",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.67.1",
+    "rollup-plugin-babel": "4.0.3",
+    "rollup-plugin-cleanup": "^3.0.0",
+    "rollup-plugin-commonjs": "^9.1.6",
+    "rollup-plugin-filesize": "^5.0.1",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-sourcemaps": "^0.4.2",
+    "serve": "^10.0.1",
+    "sinon": "^7.1.1",
+    "ts-jest": "^23.1.4",
+    "typescript": "3.1.6",
+    "webpack": "^4.25.1"
+  },
+  "peerDependencies": {
+    "@material-ui/core": "^3.5.1"
+  },
+  "unpkg": "dist/plugin.umd.js"
+}
