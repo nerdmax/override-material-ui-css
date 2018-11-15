@@ -45,7 +45,7 @@ const setupInsertionPoint = () => {
   return { generateClassName, jss };
 };
 
-type Props = { children: JSX.Element[] | JSX.Element };
+type Props = { children: (JSX.Element | null)[] | JSX.Element };
 type State = { generateClassName; jss };
 
 class OverrideMaterialUICss extends React.Component<Props, State> {
