@@ -25,7 +25,9 @@
     "storybook": "start-storybook -p 6006",
     "test": "jest",
     "test:cover": "npm run test && codecov",
-    "test:watch": "npm test -- --watchAll"
+    "test:watch": "npm test -- --watchAll",
+    "travis-deploy-once": "travis-deploy-once",
+    "semantic-release": "semantic-release"
   },
   "husky": {
     "hooks": {
@@ -117,12 +119,14 @@
     "rollup-plugin-filesize": "^5.0.1",
     "rollup-plugin-node-resolve": "^3.4.0",
     "rollup-plugin-sourcemaps": "^0.4.2",
+    "semantic-release": "^15.12.0",
     "serve": "^10.0.1",
     "sinon": "^7.1.1",
     "ts-jest": "^23.1.4",
     "ts-node": "^7.0.1",
     "typescript": "3.1.6",
-    "webpack": "^4.25.1"
+    "webpack": "^4.25.1",
+    "travis-deploy-once": "^5.0.9"
   },
   "peerDependencies": {
     "@material-ui/core": "^3.5.1"

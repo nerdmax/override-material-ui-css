@@ -17,4 +17,4 @@ script:
   - yarn test:cover && yarn build:docz
 after_success:
   - npm run deploy-docs
-  # - npm run semantic-release
+  - npm run semantic-release
