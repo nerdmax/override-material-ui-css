@@ -1,6 +1,14 @@
 {
   "name": "override-material-ui-css",
   "version": "0.0.0-development",
+  "keywords": [
+    "material",
+    "material-ui",
+    "override",
+    "overwrite",
+    "css",
+    "style"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/nerdmax/override-material-ui-css.git"
@@ -22,12 +30,12 @@
     "dev:docz": "docz dev",
     "format": "pretty-quick",
     "prepublishOnly": "npm run test && npm run build",
+    "semantic-release": "semantic-release",
     "storybook": "start-storybook -p 6006",
     "test": "jest",
     "test:cover": "npm run test && codecov",
     "test:watch": "npm test -- --watchAll",
-    "travis-deploy-once": "travis-deploy-once",
-    "semantic-release": "semantic-release"
+    "travis-deploy-once": "travis-deploy-once"
   },
   "husky": {
     "hooks": {
@@ -122,11 +130,11 @@
     "semantic-release": "^15.12.0",
     "serve": "^10.0.1",
     "sinon": "^7.1.1",
+    "travis-deploy-once": "^5.0.9",
     "ts-jest": "^23.1.4",
     "ts-node": "^7.0.1",
     "typescript": "3.1.6",
-    "webpack": "^4.25.1",
-    "travis-deploy-once": "^5.0.9"
+    "webpack": "^4.25.1"
   },
   "peerDependencies": {
     "@material-ui/core": "^3.5.1"
