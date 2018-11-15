@@ -1,9 +1,9 @@
 {
-  "vendors.js": "/static/js/vendors.d07a6ad9.js",
-  "app.js": "/static/js/app.14d6e9dc.js",
-  "docs-index.js": "/static/js/docs-index.f306d089.js",
-  "docs-with-override-material-ui-css.js": "/static/js/docs-with-override-material-ui-css.fbb08db0.js",
-  "docs-without-override-material-ui-css.js": "/static/js/docs-without-override-material-ui-css.143cee14.js",
-  "runtime~app.js": "/static/js/runtime~app.0713d74079d8ad08e7bd.js",
-  "index.html": "/index.html"
+  "vendors.js": "/override-material-ui-css/static/js/vendors.37b33560.js",
+  "app.js": "/override-material-ui-css/static/js/app.14d6e9dc.js",
+  "docs-index.js": "/override-material-ui-css/static/js/docs-index.f306d089.js",
+  "docs-with-override-material-ui-css.js": "/override-material-ui-css/static/js/docs-with-override-material-ui-css.fbb08db0.js",
+  "docs-without-override-material-ui-css.js": "/override-material-ui-css/static/js/docs-without-override-material-ui-css.143cee14.js",
+  "runtime~app.js": "/override-material-ui-css/static/js/runtime~app.0cdb61218ffc6273f34b.js",
+  "index.html": "/override-material-ui-css/index.html"
 }
