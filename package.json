@@ -14,7 +14,6 @@
     "build-storybook": "npm run build && rimraf storybook-static && build-storybook",
     "build:docz": "docz build",
     "build:watch": "chokidar 'src/**/*.ts' 'src/**/*.tsx' -c 'npm run build'",
-    "precommit": "pretty-quick --staged",
     "deploy": "npm run now-build && cd storybook-static && now",
     "dev:docz": "docz dev",
     "format": "pretty-quick",
@@ -28,7 +27,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged"
+      "precommit": "pretty-quick --staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "jest": {
@@ -65,6 +65,8 @@
     "@babel/preset-env": "^7.1.5",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.1.0",
+    "@commitlint/cli": "^7.2.1",
+    "@commitlint/config-conventional": "^7.1.2",
     "@material-ui/core": "^3.5.1",
     "@storybook/addon-a11y": "^4.0.4",
     "@storybook/addon-actions": "^4.0.4",
@@ -120,6 +122,11 @@
   },
   "peerDependencies": {
     "@material-ui/core": "^3.5.1"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   },
   "unpkg": "dist/plugin.umd.js"
 }
