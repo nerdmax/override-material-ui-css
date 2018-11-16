@@ -15,7 +15,7 @@
 
 This library is a wrapper component which only takes the children prop and renders it without any modification but just moving Material-UI's `<style>` tag to the top of the `<head>` tag. It will make overriding style very easy.
 
-[![NPM](https://nodei.co/npm/override-material-ui-css.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/override-material-ui-css/)
+[![NPM](https://nodei.co/npm/override-material-ui-css.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/override-material-ui-css/) [![Greenkeeper badge](https://badges.greenkeeper.io/nerdmax/override-material-ui-css.svg)](https://greenkeeper.io/)
 
 - [override-material-ui-css](#override-material-ui-css)
   - [Installation](#installation)
