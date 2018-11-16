@@ -1,4 +1,5 @@
 import { createGenerateClassName, jssPreset } from "@material-ui/core/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
 import { create } from "jss";
 import * as React from "react";
 import JssProvider from "react-jss/lib/JssProvider";
@@ -45,7 +46,10 @@ const setupInsertionPoint = () => {
   return { generateClassName, jss };
 };
 
-type Props = { children: (JSX.Element | null)[] | JSX.Element };
+type Props = {
+  children?: (JSX.Element | null)[] | JSX.Element;
+  useCssBaseline?: boolean;
+};
 type State = { generateClassName; jss };
 
 class OverrideMaterialUICss extends React.Component<Props, State> {
@@ -60,11 +64,14 @@ class OverrideMaterialUICss extends React.Component<Props, State> {
 
   render() {
     const { generateClassName, jss } = this.state;
-    const { children } = this.props;
+    const { children, useCssBaseline = true } = this.props;
 
     return (
       <JssProvider jss={jss} generateClassName={generateClassName}>
-        <>{children}</>
+        <>
+          {useCssBaseline ? <CssBaseline /> : null}
+          <>{children}</>
+        </>
       </JssProvider>
     );
   }

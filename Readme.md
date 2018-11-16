@@ -16,6 +16,8 @@
 
 This library is a wrapper component which only takes the children prop and renders it without any modification but just moving Material-UI's `<style>` tag to the top of the `<head>` tag. It will make overriding style very easy.
 
+PS: OverrideMaterialUICss will add [CSS Baseline](https://material-ui.com/style/css-baseline/). It's provided by Material-UI to kickstart an elegant, consistent, and simple baseline to build upon. It's not a must have thing and you can disable this feature by setting `useCssBaseline` to false. Eg: `<OverrideMaterialUICss useCssBaseline={false}> <button>testButton</button> </OverrideMaterialUICss>`
+
 [![NPM](https://nodei.co/npm/override-material-ui-css.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/override-material-ui-css/)
 
 - [override-material-ui-css](#override-material-ui-css)
@@ -42,7 +44,7 @@ import { OverrideMaterialUICss } from "override-material-ui-css";
 Wrap your component with `OverrideMaterialUICss` :
 
 ```html
-<OverrideMaterialUICss> <button data-testid="test-btn">testButton</button> </OverrideMaterialUICss>
+<OverrideMaterialUICss> <button>testButton</button> </OverrideMaterialUICss>
 ```
 
 For more details, please check: [Live examples](https://nerdmax.github.io/override-material-ui-css)
