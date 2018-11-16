@@ -89,4 +89,42 @@ describe("The OverrideMaterialUICss component", () => {
       "jss-insertion-point"
     );
   });
+
+  describe("with prop: useCssBaseline unset", () => {
+    test("injects the MuiCssBaseline style", () => {
+      const div = document.createElement("div");
+      render(
+        <OverrideMaterialUICss>
+          <Button>testButton</Button>
+        </OverrideMaterialUICss>,
+        { container: document.body.appendChild(div) }
+      );
+
+      const hasMuiCssBaseline = any((node: Node) =>
+        node.nodeType === 1
+          ? (node as HTMLElement).getAttribute("data-meta") === "MuiCssBaseline"
+          : false
+      )(document.head.childNodes);
+      expect(hasMuiCssBaseline).toBeTruthy();
+    });
+  });
+
+  describe("with prop: useCssBaseline set to false", () => {
+    test("doesn't inject the MuiCssBaseline style", () => {
+      const div = document.createElement("div");
+      render(
+        <OverrideMaterialUICss useCssBaseline={false}>
+          <Button>testButton</Button>
+        </OverrideMaterialUICss>,
+        { container: document.body.appendChild(div) }
+      );
+
+      const hasMuiCssBaseline = any((node: Node) =>
+        node.nodeType === 1
+          ? (node as HTMLElement).getAttribute("data-meta") === "MuiCssBaseline"
+          : false
+      )(document.head.childNodes);
+      expect(hasMuiCssBaseline).toBeFalsy();
+    });
+  });
 });
