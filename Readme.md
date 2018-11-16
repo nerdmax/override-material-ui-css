@@ -10,6 +10,7 @@
 [![Build Status](https://travis-ci.org/nerdmax/override-material-ui-css.svg?branch=master)](https://travis-ci.org/nerdmax/override-material-ui-css)
 [![codecov](https://codecov.io/gh/nerdmax/override-material-ui-css/branch/master/graph/badge.svg)](https://codecov.io/gh/nerdmax/override-material-ui-css)
 [![Dev Dependencies](https://david-dm.org/nerdmax/override-material-ui-css.svg)](https://david-dm.org/nerdmax/override-material-ui-css)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg)](https://paypal.me/nerdmax)
 
 > [Material-UI](https://material-ui.com/) is a cool react component library and it's using [JSS](https://github.com/cssinjs/jss) as styling solution. The CSS injected by Material-UI to style a component has the highest specificity possible as the `<style>` is injected at the bottom of the `<head>` to ensure the components always render correctly. You need to change the order of the `<style>` injected by Material-UI if you want to override the it's default style

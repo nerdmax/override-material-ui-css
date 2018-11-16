@@ -2,11 +2,11 @@
   "name": "override-material-ui-css",
   "version": "0.0.0-development",
   "keywords": [
+    "css",
     "material",
     "material-ui",
     "override",
     "overwrite",
-    "css",
     "style"
   ],
   "repository": {
@@ -41,6 +41,11 @@
     "hooks": {
       "precommit": "pretty-quick --staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
     }
   },
   "jest": {
