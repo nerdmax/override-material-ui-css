@@ -34,7 +34,7 @@ describe("The OverrideMaterialUICss component", () => {
     const anotherDiv = document.createElement("div");
     const AnotherOverrideMaterialUICssContainerWithMUIBtn = render(
       <OverrideMaterialUICss>
-        <Button data-testid="test-btn">testButton</Button>
+        <Button data-testid="test-btn2">testButton</Button>
       </OverrideMaterialUICss>,
       { container: document.body.appendChild(anotherDiv) }
     );
