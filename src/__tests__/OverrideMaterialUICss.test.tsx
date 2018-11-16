@@ -1,40 +1,54 @@
 import Button from "@material-ui/core/Button";
 import { any } from "ramda";
 import * as React from "react";
-import { render } from "react-testing-library";
+import { render, cleanup } from "react-testing-library";
 import { OverrideMaterialUICss } from "../";
 
-describe("The OverrideMaterialUICss component", () => {
-  const div = document.createElement("div");
-  const OverrideMaterialUICssContainerWithMUIBtn = render(
-    <OverrideMaterialUICss>
-      <Button data-testid="test-btn">testButton</Button>
-    </OverrideMaterialUICss>,
-    { container: document.body.appendChild(div) }
-  );
+afterEach(cleanup);
 
+describe("The OverrideMaterialUICss component", () => {
   test("matches the snapshot", () => {
-    expect(
-      OverrideMaterialUICssContainerWithMUIBtn.container
-    ).toMatchSnapshot();
+    const { container } = render(
+      <OverrideMaterialUICss>
+        <Button>testButton</Button>
+      </OverrideMaterialUICss>
+    );
+    expect(container).toMatchSnapshot();
   });
 
   test("renders the children", () => {
-    const contentContainer = OverrideMaterialUICssContainerWithMUIBtn.queryByText(
-      "testButton"
+    const { queryByText } = render(
+      <OverrideMaterialUICss>
+        <Button>testButton</Button>
+      </OverrideMaterialUICss>
     );
-    expect(contentContainer).toBeTruthy();
+    const buttonContainer = queryByText("testButton");
+    expect(buttonContainer).toBeTruthy();
   });
 
   test("injects the jss-insertion-point", () => {
+    const div = document.createElement("div");
+    render(
+      <OverrideMaterialUICss>
+        <Button>testButton</Button>
+      </OverrideMaterialUICss>,
+      { container: document.body.appendChild(div) }
+    );
     expect(document.head.childNodes[0].nodeValue).toBe("jss-insertion-point");
   });
 
   test("injects the jss-insertion-point only once even OverrideMaterialUICss has been used twice", () => {
+    const div = document.createElement("div");
     const anotherDiv = document.createElement("div");
-    const AnotherOverrideMaterialUICssContainerWithMUIBtn = render(
+    render(
       <OverrideMaterialUICss>
-        <Button data-testid="test-btn2">testButton</Button>
+        <Button>testButton</Button>
+      </OverrideMaterialUICss>,
+      { container: document.body.appendChild(div) }
+    );
+    render(
+      <OverrideMaterialUICss>
+        <Button>testButton</Button>
       </OverrideMaterialUICss>,
       { container: document.body.appendChild(anotherDiv) }
     );
@@ -44,18 +58,33 @@ describe("The OverrideMaterialUICss component", () => {
   });
 
   test("injects the material UI's styles below jss-insertion-point", () => {
+    const div = document.createElement("div");
+    render(
+      <OverrideMaterialUICss>
+        <Button>testButton</Button>
+      </OverrideMaterialUICss>,
+      { container: document.body.appendChild(div) }
+    );
+
     expect(document.head.childNodes[1].nodeName).toBe("STYLE");
 
-    const hasMuiButtonBase = any((node: any) =>
-      node.childNodes.length !== 0
-        ? node.childNodes[0].nodeValue.includes("MuiButtonBase")
+    const hasMuiButtonBase = any((node: Node) =>
+      node.nodeType === 1
+        ? (node as HTMLElement).getAttribute("data-meta") === "MuiButtonBase"
         : false
     )(document.head.childNodes);
     expect(hasMuiButtonBase).toBeTruthy();
   });
 
   test("removes the jss-insertion-point after unmounted", () => {
-    OverrideMaterialUICssContainerWithMUIBtn.unmount();
+    const div = document.createElement("div");
+    const { unmount } = render(
+      <OverrideMaterialUICss>
+        <Button>testButton</Button>
+      </OverrideMaterialUICss>,
+      { container: document.body.appendChild(div) }
+    );
+    unmount();
     expect(document.head.childNodes[0].nodeValue).not.toBe(
       "jss-insertion-point"
     );
