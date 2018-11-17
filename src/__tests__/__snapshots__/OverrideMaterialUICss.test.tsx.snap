@@ -1,9 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The OverrideMaterialUICss component matches the snapshot 1`] = `
+.emotion-0 {
+  color: red;
+  background-color: blue;
+  font-size: 4rem;
+}
+
 <div>
   <button
-    class="MuiButtonBase-root-27 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6"
+    class="MuiButtonBase-root-27 MuiButton-root-1 MuiButton-text-3 MuiButton-flat-6 emotion-0"
     tabindex="0"
     type="button"
   >

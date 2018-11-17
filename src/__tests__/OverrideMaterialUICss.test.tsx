@@ -1,39 +1,63 @@
 import Button from "@material-ui/core/Button";
-import { any } from "ramda";
+import { any, remove } from "ramda";
 import * as React from "react";
 import { render, cleanup } from "react-testing-library";
 import { OverrideMaterialUICss } from "../";
+import { css } from "emotion";
 
-afterEach(cleanup);
+const customisedStyle = css(`
+color: red;
+background-color: blue;
+font-size: 4rem;
+`);
+
+const countNodesWithCertainAttribute = (
+  nodeList: NodeListOf<ChildNode> | ChildNode[],
+  attributeName: string,
+  attributeValue: string
+): number => {
+  const nodesArray: ChildNode[] = Array.prototype.slice.call(nodeList);
+  const targetNode = nodesArray.filter(node =>
+    node.nodeType === 1
+      ? ((node as HTMLElement).getAttribute(attributeName) || "").includes(
+          attributeValue
+        )
+      : false
+  );
+  return targetNode.length;
+};
 
 describe("The OverrideMaterialUICss component", () => {
   test("matches the snapshot", () => {
     const { container } = render(
       <OverrideMaterialUICss>
-        <Button>testButton</Button>
+        <Button className={customisedStyle}>testButton</Button>
       </OverrideMaterialUICss>
     );
+
     expect(container).toMatchSnapshot();
   });
 
   test("renders the children", () => {
     const { queryByText } = render(
       <OverrideMaterialUICss>
-        <Button>testButton</Button>
+        <Button className={customisedStyle}>testButton</Button>
       </OverrideMaterialUICss>
     );
-    const buttonContainer = queryByText("testButton");
-    expect(buttonContainer).toBeTruthy();
+
+    expect(queryByText("testButton")).toBeTruthy();
   });
 
-  test("injects the jss-insertion-point", () => {
+  test("injects the jss-insertion-point to the top of head tag", () => {
     const div = document.createElement("div");
     render(
       <OverrideMaterialUICss>
-        <Button>testButton</Button>
+        <Button className={customisedStyle}>testButton</Button>
       </OverrideMaterialUICss>,
       { container: document.body.appendChild(div) }
     );
+
+    expect(document.head.childNodes[0].nodeType).toBe(8);
     expect(document.head.childNodes[0].nodeValue).toBe("jss-insertion-point");
   });
 
@@ -42,52 +66,61 @@ describe("The OverrideMaterialUICss component", () => {
     const anotherDiv = document.createElement("div");
     render(
       <OverrideMaterialUICss>
-        <Button>testButton</Button>
+        <Button className={customisedStyle}>testButton</Button>
       </OverrideMaterialUICss>,
       { container: document.body.appendChild(div) }
     );
     render(
       <OverrideMaterialUICss>
-        <Button>testButton</Button>
+        <Button className={customisedStyle}>testButton</Button>
       </OverrideMaterialUICss>,
       { container: document.body.appendChild(anotherDiv) }
     );
-    expect(document.head.childNodes[1].nodeValue).not.toBe(
-      "jss-insertion-point"
-    );
+    const jssInsertionPoint = Array.prototype.slice
+      .call(document.head.childNodes)
+      .filter(headNode => headNode.nodeValue === "jss-insertion-point");
+
+    expect(jssInsertionPoint.length).toBe(1);
   });
 
   test("injects the material UI's styles below jss-insertion-point", () => {
     const div = document.createElement("div");
     render(
       <OverrideMaterialUICss>
-        <Button>testButton</Button>
+        <Button className={customisedStyle}>testButton</Button>
       </OverrideMaterialUICss>,
       { container: document.body.appendChild(div) }
     );
 
-    expect(document.head.childNodes[1].nodeName).toBe("STYLE");
+    expect(document.head.childNodes[0].nodeValue).toBe("jss-insertion-point");
 
-    const hasMuiButtonBase = any((node: Node) =>
-      node.nodeType === 1
-        ? (node as HTMLElement).getAttribute("data-meta") === "MuiButtonBase"
-        : false
-    )(document.head.childNodes);
-    expect(hasMuiButtonBase).toBeTruthy();
+    const headChildNodesWithoutFirstNode = remove(
+      0,
+      1,
+      Array.prototype.slice.call(document.head.childNodes) as ChildNode[]
+    );
+    const amountOfMuiStyleNode = countNodesWithCertainAttribute(
+      headChildNodesWithoutFirstNode,
+      "data-meta",
+      "Mui"
+    );
+    expect(amountOfMuiStyleNode).toBeGreaterThan(0);
   });
 
   test("removes the jss-insertion-point after unmounted", () => {
     const div = document.createElement("div");
     const { unmount } = render(
       <OverrideMaterialUICss>
-        <Button>testButton</Button>
+        <Button className={customisedStyle}>testButton</Button>
       </OverrideMaterialUICss>,
       { container: document.body.appendChild(div) }
     );
     unmount();
-    expect(document.head.childNodes[0].nodeValue).not.toBe(
-      "jss-insertion-point"
-    );
+    const jssInsertionPoint = Array.prototype.slice
+      .call(document.head.childNodes)
+      .filter(headNode => headNode.nodeValue === "jss-insertion-point");
+
+    expect(jssInsertionPoint.length).toBe(0);
   });
 
   describe("with prop: useCssBaseline unset", () => {
@@ -95,17 +128,17 @@ describe("The OverrideMaterialUICss component", () => {
       const div = document.createElement("div");
       render(
         <OverrideMaterialUICss>
-          <Button>testButton</Button>
+          <Button className={customisedStyle}>testButton</Button>
         </OverrideMaterialUICss>,
         { container: document.body.appendChild(div) }
       );
 
-      const hasMuiCssBaseline = any((node: Node) =>
-        node.nodeType === 1
-          ? (node as HTMLElement).getAttribute("data-meta") === "MuiCssBaseline"
-          : false
-      )(document.head.childNodes);
-      expect(hasMuiCssBaseline).toBeTruthy();
+      const amountOfMuiCssBaselineNode = countNodesWithCertainAttribute(
+        document.head.childNodes,
+        "data-meta",
+        "MuiCssBaseline"
+      );
+      expect(amountOfMuiCssBaselineNode).toBe(1);
     });
   });
 
@@ -114,17 +147,17 @@ describe("The OverrideMaterialUICss component", () => {
       const div = document.createElement("div");
       render(
         <OverrideMaterialUICss useCssBaseline={false}>
-          <Button>testButton</Button>
+          <Button className={customisedStyle}>testButton</Button>
         </OverrideMaterialUICss>,
         { container: document.body.appendChild(div) }
       );
 
-      const hasMuiCssBaseline = any((node: Node) =>
-        node.nodeType === 1
-          ? (node as HTMLElement).getAttribute("data-meta") === "MuiCssBaseline"
-          : false
-      )(document.head.childNodes);
-      expect(hasMuiCssBaseline).toBeFalsy();
+      const amountOfMuiCssBaselineNode = countNodesWithCertainAttribute(
+        document.head.childNodes,
+        "data-meta",
+        "MuiCssBaseline"
+      );
+      expect(amountOfMuiCssBaselineNode).toBe(0);
     });
   });
 });
