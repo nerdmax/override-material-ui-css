@@ -6,7 +6,7 @@ import JssProvider from "react-jss/lib/JssProvider";
 
 const jssInsertionPoint = "jss-insertion-point";
 
-const isInsertionPointExisting = () => {
+const isInsertionPointExisting = (): boolean => {
   const documentHead = document.head;
   for (var i = 0; i < documentHead.childNodes.length; i++) {
     var node = documentHead.childNodes[i];
