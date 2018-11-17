@@ -14,7 +14,8 @@ cache:
 git:
   depth: 5
 script:
-  - yarn test:cover && yarn build:docz
+  - yarn test:cover
+  - yarn format:ci
 after_success:
-  - npm run deploy-docs
-  - npm run semantic-release
+  - yarn build:docz && yarn run deploy-docs
+  - yarn run semantic-release
