@@ -26,5 +26,12 @@
     "lib": ["dom", "es2015", "es2016"]
   },
   "includes": ["src"],
-  "exclude": ["node_modules", "dist", "stories", "tests", "compiled", "src/**/__tests__"]
+  "exclude": [
+    "node_modules",
+    "dist",
+    "stories",
+    "tests",
+    "compiled",
+    "src/**/__tests__"
+  ]
 }

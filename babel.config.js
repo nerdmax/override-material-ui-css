@@ -15,4 +15,4 @@ module.exports = {
       plugins: ["require-context-hook"]
     }
   }
-};
+}

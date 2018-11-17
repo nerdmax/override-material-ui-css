@@ -28,14 +28,15 @@
     "build:watch": "chokidar 'src/**/*.ts' 'src/**/*.tsx' -c 'npm run build'",
     "deploy-docs": "gh-pages --repo https://$GH_TOKEN@github.com/nerdmax/override-material-ui-css.git -d .docz/dist",
     "dev:docz": "docz dev",
-    "format": "pretty-quick",
+    "format": "yarn prettier --write",
     "prepublishOnly": "npm run test && npm run build",
     "semantic-release": "semantic-release",
     "storybook": "start-storybook -p 6006",
     "test": "jest",
     "test:cover": "npm run test && codecov",
     "test:watch": "npm test -- --watchAll",
-    "travis-deploy-once": "travis-deploy-once"
+    "travis-deploy-once": "travis-deploy-once",
+    "prettier": "prettier '**/*.{js,ts,tsx,css,json}'"
   },
   "husky": {
     "hooks": {
@@ -47,6 +48,9 @@
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
+  },
+  "prettier": {
+    "semi": false
   },
   "jest": {
     "collectCoverage": true,
