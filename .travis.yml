@@ -9,11 +9,30 @@ cache:
     - node_modules
 git:
   depth: 5
-script:
-  - yarn format:ci
-  - yarn test:cover
-  - yarn build
-  - yarn build:docz
-after_success:
-  - $TRAVIS_BRANCH == "master" && yarn run deploy-docs
-  - $TRAVIS_BRANCH == "master" && yarn run semantic-release
+stages:
+  - test
+  - build
+  - name: deploy
+    if: branch = master
+jobs:
+  include:
+    - stage: "test"
+      name: "Format check"
+      script: yarn format:ci
+    - stage: "test"
+      name: "Unit test"
+      script: yarn test:cover
+
+    - stage: "build"
+      name: "Build project"
+      script: yarn build
+    - stage: "build"
+      name: "Build docz"
+      script: yarn build:docz
+
+    - stage: "deploy"
+      name: "Deploy docs"
+      script: yarn run deploy-docs
+    - stage: "deploy"
+      name: "Deploy project"
+      script: yarn run semantic-release
