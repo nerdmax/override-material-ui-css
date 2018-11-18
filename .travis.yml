@@ -1,8 +1,4 @@
 language: node_js
-branches:
-  only:
-    - master
-    - /^greenkeeper/.*$/
 node_js:
   - "10"
 env:
@@ -19,5 +15,5 @@ script:
   - yarn build
   - yarn build:docz
 after_success:
-  - yarn run deploy-docs
-  - yarn run semantic-release
+  - $TRAVIS_BRANCH == "master" && yarn run deploy-docs
+  - $TRAVIS_BRANCH == "master" && yarn run semantic-release
