@@ -32,7 +32,7 @@ jobs:
 
     - stage: "deploy"
       name: "Deploy docs"
-      script: yarn run deploy-docs
+      script: yarn build:docz && yarn run deploy-docs
     - stage: "deploy"
       name: "Deploy project"
       script: yarn run semantic-release
