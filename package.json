@@ -38,7 +38,7 @@
     "test:cover": "yarn run test && codecov",
     "test:watch": "yarn test -- --watchAll",
     "travis-deploy-once": "travis-deploy-once",
-    "prettier": "prettier '**/*.{js,ts,tsx,css,json}'"
+    "prettier": "prettier '**/*.{js,ts,tsx,css,json,mdx}'"
   },
   "husky": {
     "hooks": {
