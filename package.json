@@ -92,7 +92,7 @@
     "@commitlint/config-conventional": "^7.1.2",
     "@material-ui/core": "^3.5.1",
     "@storybook/addon-a11y": "^4.0.8",
-    "@storybook/addon-actions": "^4.0.8",
+    "@storybook/addon-actions": "^4.0.9",
     "@storybook/addon-backgrounds": "^4.0.8",
     "@storybook/addon-centered": "^4.0.8",
     "@storybook/addon-console": "^1.1.0",
