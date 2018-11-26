@@ -149,7 +149,7 @@
     "webpack": "^4.25.1"
   },
   "peerDependencies": {
-    "@material-ui/core": "^3.5.1"
+    "@material-ui/core": "^1.x || ^3.x"
   },
   "commitlint": {
     "extends": [
