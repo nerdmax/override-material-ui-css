@@ -119,7 +119,7 @@
     "codecov": "^3.1.0",
     "concurrently": "^4.0.1",
     "docz": "^0.12.12",
-    "emotion": "^9.2.12",
+    "emotion": "^10.0.0",
     "gh-pages": "^2.0.1",
     "husky": "^1.1.3",
     "jest": "^23.6.0",
