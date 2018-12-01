@@ -93,7 +93,7 @@
     "@material-ui/core": "^3.5.1",
     "@storybook/addon-a11y": "^4.0.9",
     "@storybook/addon-actions": "^4.0.10",
-    "@storybook/addon-backgrounds": "^4.0.8",
+    "@storybook/addon-backgrounds": "^4.0.10",
     "@storybook/addon-centered": "^4.0.10",
     "@storybook/addon-console": "^1.1.0",
     "@storybook/addon-info": "^4.0.10",
