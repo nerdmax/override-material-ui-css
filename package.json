@@ -107,7 +107,7 @@
     "@types/jest": "^23.3.2",
     "@types/ramda": "^0.25.41",
     "@types/react-test-renderer": "^16.0.2",
-    "@types/sinon": "^5.0.2",
+    "@types/sinon": "^7.0.0",
     "@types/storybook__react": "^4.0.0",
     "awesome-typescript-loader": "^5.2.1",
     "babel-core": "^7.0.0-0",
