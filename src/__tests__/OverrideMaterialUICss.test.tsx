@@ -1,9 +1,9 @@
 import Button from "@material-ui/core/Button"
+import { css } from "emotion"
 import { any, remove } from "ramda"
 import * as React from "react"
-import { render, cleanup } from "react-testing-library"
+import { cleanup, render } from "react-testing-library"
 import { OverrideMaterialUICss } from "../"
-import { css } from "emotion"
 
 const customisedStyle = css(`
 color: red;

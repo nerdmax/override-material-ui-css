@@ -41,7 +41,7 @@ npm install --save-dev override-material-ui-css
 Require the plugin in your index.js:
 
 ```typescript
-import { OverrideMaterialUICss } from "override-material-ui-css";
+import { OverrideMaterialUICss } from "override-material-ui-css"
 ```
 
 Wrap your component with `OverrideMaterialUICss` :
