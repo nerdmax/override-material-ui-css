@@ -21,7 +21,7 @@ jobs:
       script: yarn format:ci
     - stage: "test"
       name: "Unit test"
-      script: yarn test:cover
+      script: yarn test:prod
 
     - stage: "build"
       name: "Build project"
