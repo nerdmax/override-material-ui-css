@@ -1,6 +1,7 @@
 {
   "name": "override-material-ui-css",
   "version": "0.0.0-development",
+  "description": "This is a library for overriding Material-UI's default CSS.",
   "keywords": [
     "css",
     "material",
