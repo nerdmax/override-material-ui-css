@@ -104,7 +104,7 @@
     "@storybook/addon-a11y": "^4.1.7",
     "@storybook/addon-actions": "^4.1.7",
     "@storybook/addon-backgrounds": "^4.1.7",
-    "@storybook/addon-centered": "^4.1.7",
+    "@storybook/addon-centered": "^4.1.12",
     "@storybook/addon-console": "^1.1.0",
     "@storybook/addon-info": "^4.1.7",
     "@storybook/addon-knobs": "^4.1.7",
