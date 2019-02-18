@@ -155,7 +155,7 @@
     "serve": "^10.0.1",
     "sinon": "^7.1.1",
     "travis-deploy-once": "^5.0.9",
-    "ts-jest": "^23.1.4",
+    "ts-jest": "^24.0.0",
     "ts-node": "^7.0.1",
     "tslint": "^5.12.1",
     "tslint-config-prettier": "^1.18.0",
