@@ -13814,10 +13814,10 @@ sourcemap-codec@^1.4.1:
   resolved "https://registry.yarnpkg.com/sourcemap-codec/-/sourcemap-codec-1.4.4.tgz#c63ea927c029dd6bd9a2b7fa03b3fec02ad56e9f"
   integrity sha512-CYAPYdBu34781kLHkaW3m6b/uUSyMOC2R61gcYMWooeuaGtjof86ZA/8T+qVPPt7np1085CR9hmMGrySwEc8Xg==
 
-spa-github-pages-cli@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/spa-github-pages-cli/-/spa-github-pages-cli-1.1.0.tgz#b6d78ceb6497cf0ac1d3b06e235abafdb2f7c1f9"
-  integrity sha512-GiaZd5+zR2n/Un6ROfMf+qHjJAeP4ic9OW3iXcCUirrAvpR1+yHiYV4edzQtCwBncI56WDecxDyQ3VsD1GVaPw==
+spa-github-pages-cli@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/spa-github-pages-cli/-/spa-github-pages-cli-1.2.0.tgz#47a85a726d9903d5229df51f46ba243b98fc5c98"
+  integrity sha512-XGQ3HNKFNtxgfWn7kz+c8Y9VVS6DxJ13gltsePLaZfsx56m88aCrbSjTrM4WlWKcZ3IOB1HcaPFxJcSPor5Erw==
   dependencies:
     "@types/chalk" "^2.2.0"
     "@types/cheerio" "^0.22.10"
