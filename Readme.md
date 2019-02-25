@@ -16,7 +16,7 @@
 
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg)](https://paypal.me/nerdmax)
 
-> [Material-UI](https://material-ui.com/) is a cool react component library and it's using [JSS](https://github.com/cssinjs/jss) as styling solution. The CSS injected by Material-UI to style a component has the highest specificity possible as the `<style>` is injected at the bottom of the `<head>` to ensure the components always render correctly. You need to change the order of the `<style>` injected by Material-UI if you want to override the it's default style
+> [Material-UI](https://material-ui.com/) is a cool react component library and it's using [JSS](https://github.com/cssinjs/jss) as styling solution. The CSS injected by Material-UI to style a component has the highest specificity possible as the `<style>` is injected at the bottom of the `<head>` to ensure the components always render correctly. You need to change the order of the `<style>` injected by Material-UI if you want to override its default style
 
 This library is a wrapper component which only takes the children prop and renders it without any modification but just moving Material-UI's `<style>` tag to the top of the `<head>` tag. It will make overriding style very easy.
 
