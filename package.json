@@ -101,7 +101,7 @@
     "@emotion/core": "^10.0.5",
     "@emotion/styled": "^10.0.5",
     "@material-ui/core": "^3.5.1",
-    "@storybook/addon-a11y": "^4.1.13",
+    "@storybook/addon-a11y": "^5.0.0",
     "@storybook/addon-actions": "^5.0.0",
     "@storybook/addon-backgrounds": "^5.0.0",
     "@storybook/addon-centered": "^5.0.0",
