@@ -115,7 +115,7 @@
     "@storybook/addons": "^5.0.0",
     "@storybook/react": "5.0.0",
     "@types/jest": "^24.0.0",
-    "@types/ramda": "^0.25.41",
+    "@types/ramda": "^0.26.1",
     "@types/react-test-renderer": "^16.0.2",
     "@types/sinon": "^7.0.3",
     "@types/storybook__react": "^4.0.0",
