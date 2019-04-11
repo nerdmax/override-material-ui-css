@@ -152,7 +152,6 @@
     "rollup-plugin-node-resolve": "^4.0.0",
     "rollup-plugin-sourcemaps": "^0.4.2",
     "semantic-release": "^15.12.0",
-    "serve": "^10.0.1",
     "sinon": "^7.1.1",
     "spa-github-pages-cli": "^1.2.0",
     "travis-deploy-once": "^5.0.9",
