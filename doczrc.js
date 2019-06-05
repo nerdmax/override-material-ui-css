@@ -1,3 +1,4 @@
 module.exports = {
-  typescript: true
+  typescript: true,
+  files: "**/*.mdx"
 }
